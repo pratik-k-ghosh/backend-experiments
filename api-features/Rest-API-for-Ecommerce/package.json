@@ -1,0 +1,27 @@
+{
+  "name": "ecommerce-crud-api",
+  "version": "1.0.0",
+  "description": "This is a Rest API for an e-commerce website to perform the full CRUD operations with sorting and pagination.",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [
+    "ecommerce",
+    "rest",
+    "api",
+    "crud",
+    "pagination",
+    "sort",
+    "restApi"
+  ],
+  "author": "Pratik Kumar Ghosh",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.15.1"
+  }
+}
