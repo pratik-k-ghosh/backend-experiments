@@ -1,0 +1,57 @@
+/* body CSS */
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color);
+}
+
+/* form CSS */
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  border: 2px solid var(--black);
+  border-radius: var(--border-radius);
+  background-color: var(--white);
+}
+
+form > input,
+form > button {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  outline: none;
+  border-radius: var(--border-radius);
+}
+
+form > input {
+  background: transparent;
+  border: 2px solid var(--black);
+}
+
+button {
+  background-color: var(--secondary-color);
+  border: 2px solid var(--secondary-color);
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: var(--tertiary-color);
+  background-color: var(--tertiary-color);
+  box-shadow: 0 1px 2px var(--secondary-color);
+}
+
+form > p {
+  background-color: #fdbac8;
+  border-left: 3px solid var(--tertiary-color);
+  color: var(--tertiary-color);
+  padding: 0.5rem;
+  font-size: 0.8rem;
+}

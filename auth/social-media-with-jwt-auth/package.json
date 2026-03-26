@@ -1,0 +1,36 @@
+{
+  "name": "dummy-social-media-with-jwt-auth",
+  "version": "1.0.0",
+  "description": "This is a very dummy representaion of a Social Media App to practice JWT based Authentication using Cookie Parser with mongoose and express",
+  "keywords": [
+    "jwt",
+    "token",
+    "auth",
+    "bcrypt",
+    "mongodb",
+    "mongoose",
+    "node",
+    "express",
+    "cookie",
+    "cookie-parser"
+  ],
+  "license": "MIT",
+  "author": "Pratik Kumar Ghosh",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./server/server.js"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.16.0"
+  }
+}

@@ -1,0 +1,27 @@
+/* importing all fonts */
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+
+/* creating all variables */
+:root {
+  /* all colors */
+  --primary-color: #6598e4;
+  --secondary-color: #fd486c;
+  --tertiary-color: #ff0033;
+  --white: #eff2f6;
+  --black: #0c0c0c;
+  --accent-color: #106fff;
+  --denger-color: rgb(181, 35, 35);
+
+  /* all border variables */
+  --border-radius: 5px;
+}
+
+/* Reset CSS */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
