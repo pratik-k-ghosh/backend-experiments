@@ -1,0 +1,27 @@
+{
+  "name": "rest-api-with-mysql",
+  "version": "1.0.0",
+  "description": "This is a full Rest API Created with NodeJs, Express and MySql to perform full CRUD operation.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "Rest",
+    "API",
+    "Node",
+    "SQL",
+    "MySql",
+    "Express",
+    "CRUD"
+  ],
+  "author": "Pratik Kumar Ghosh",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.1"
+  }
+}
