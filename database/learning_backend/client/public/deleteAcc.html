@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delete Account</title>
+  </head>
+
+  <body>
+    <h1>Delete Account Page</h1>
+    <input type="text" name="name" id="name" placeholder="Name" />
+    <input type="password" name="pass" id="pass" placeholder="Password" />
+    <button type="submit" onclick="deleteFetchApi()">Delete</button>
+  </body>
+  <script>
+    const name = document.getElementById("name").value;
+    const pass = document.getElementById("pass").value;
+    console.log(name, pass);
+
+    const deleteFetchApi = () => {
+      try {
+        const uri = `http://127.0.0.1:8000/user/delete/${name}`;
+        fetch(uri, {
+          method: "delete",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ pass: pass }),
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    };
+  </script>
+</html>

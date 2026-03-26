@@ -1,0 +1,20 @@
+{
+  "name": "test-project",
+  "version": "1.0.0",
+  "description": "this is a test project",
+  "main": "./server/app.js",
+  "scripts": {
+    "dev": "nodemon ./server/app.js"
+  },
+  "keywords": [
+    "test",
+    "project"
+  ],
+  "author": "Pratik Kumar Ghosh",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.15.0"
+  }
+}
