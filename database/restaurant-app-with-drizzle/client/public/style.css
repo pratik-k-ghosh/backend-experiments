@@ -1,0 +1,69 @@
+:root {
+  --color-primary: hsl(244, 50%, 10%);
+  --color-secondary: hsl(244, 50%, 90%);
+  --color-tertiary: hsl(304, 80%, 80%);
+  --color-accent: red;
+  --color-white: hsl(184, 100%, 97%);
+  --color-black: hsl(0, 0%, 3%);
+}
+
+/* Reset CSS */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: var(--color-black);
+}
+
+/* body CSS */
+body {
+  background-color: var(--color-primary);
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* form CSS */
+form {
+  width: 50%;
+  height: 60%;
+  background-color: var(--color-secondary);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem;
+}
+
+form > input,
+form > button {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+}
+
+form > button {
+  cursor: pointer;
+  background-color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  color: var(--color-white);
+}
+
+form > button:hover {
+  background: transparent;
+  color: var(--color-primary);
+}
+
+form > a {
+  color: var(--color-accent);
+}
+
+h1 {
+  color: var(--color-white);
+}
