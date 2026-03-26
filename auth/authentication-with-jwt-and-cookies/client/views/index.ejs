@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+  </head>
+  <body>
+    <% if (!user) { %>
+    <p>You are Not Logged In</p>
+    <a href="/sign">click to sign in</a>
+    <% } else { %>
+    <p>You are Logged In</p>
+    <h1>Welocme to Home Page</h1>
+    <a href="/logout">click to log out</a>
+    <% } %>
+  </body>
+</html>

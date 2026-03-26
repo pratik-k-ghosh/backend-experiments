@@ -1,0 +1,48 @@
+{
+  "name": "authentication-with-jwt-and-cookies",
+  "version": "1.0.0",
+  "description": "This is a mini project to practice JWT based authentication with Cookies Parser with NodeJs and Drizzle ORM",
+  "keywords": [
+    "jwt",
+    "cookies",
+    "cookie-parser",
+    "auth",
+    "authentication",
+    "argon2",
+    "node",
+    "mysql2",
+    "drizzle"
+  ],
+  "homepage": "https://github.com/PratikKrGhosh/Authentication-with-JWT-and-Cookies#readme",
+  "bugs": {
+    "url": "https://github.com/PratikKrGhosh/Authentication-with-JWT-and-Cookies/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PratikKrGhosh/Authentication-with-JWT-and-Cookies.git"
+  },
+  "license": "MIT",
+  "author": "Pratik Kumar Ghosh",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./server/server.js",
+    "db:gen": "drizzle-kit generate",
+    "db:mig": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio"
+  },
+  "dependencies": {
+    "argon2": "^0.43.0",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.5.0",
+    "drizzle-orm": "^0.44.2",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.14.1"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.1"
+  }
+}
