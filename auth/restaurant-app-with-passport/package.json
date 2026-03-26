@@ -1,0 +1,28 @@
+{
+  "name": "restaurant-app-with-local-auth",
+  "version": "1.0.0",
+  "description": "This a Full app for a restaurant with full log in functionality with Local Strategy.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "localStrategy",
+    "auth",
+    "js",
+    "login",
+    "authentication"
+  ],
+  "author": "Pratik Kumar Ghosh",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.15.1",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0"
+  }
+}
