@@ -1,0 +1,50 @@
+{
+  "name": "dummy-email-verification-with-mjml",
+  "version": "1.0.0",
+  "description": "This is a dummy email verification project using nodemailer and ethereal. I used MJML for styling the email",
+  "keywords": [
+    "drizzle",
+    "orm",
+    "nodemailer",
+    "mjml",
+    "ethereal"
+  ],
+  "homepage": "https://github.com/PratikKrGhosh/Dummy-Email-Verification-with-MJML#readme",
+  "bugs": {
+    "url": "https://github.com/PratikKrGhosh/Dummy-Email-Verification-with-MJML/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PratikKrGhosh/Dummy-Email-Verification-with-MJML.git"
+  },
+  "license": "MIT",
+  "author": "Pratik Kumar Ghosh",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server/server.js",
+    "db:gen": "drizzle-kit generate",
+    "db:mig": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio"
+  },
+  "dependencies": {
+    "argon2": "^0.43.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.0.1",
+    "drizzle-orm": "^0.44.2",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "jsonwebtoken": "^9.0.2",
+    "mjml": "^4.15.3",
+    "mysql2": "^3.14.1",
+    "nodemailer": "^7.0.4",
+    "request-ip": "^3.3.0",
+    "zod": "^3.25.67"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.4"
+  }
+}
