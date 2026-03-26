@@ -1,0 +1,13 @@
+<mjml>
+  <mj-head>
+    <mj-title>Verify Your Email Address</mj-title>
+  </mj-head>
+  <mj-body>
+    <mj-section>
+      <mj-column>
+        <mj-text>Code: <%= code %></mj-text>
+        <mj-button href="<%= verifyUri %>">Verify Now</mj-button>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

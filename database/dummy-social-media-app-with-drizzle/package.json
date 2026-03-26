@@ -1,0 +1,51 @@
+{
+  "name": "dummy-social-media-app-with-drizzle",
+  "version": "1.0.0",
+  "description": "This is a Dummy Social Media website to practice Dual Auth, Email Verification, Reset and Forget Password",
+  "keywords": [
+    "drizzle",
+    "dual-auth",
+    "email-verification",
+    "resend",
+    "password-hash",
+    "change-password"
+  ],
+  "homepage": "https://github.com/PratikKrGhosh/Dummy-Social-Media-App-with-Drizzle#readme",
+  "bugs": {
+    "url": "https://github.com/PratikKrGhosh/Dummy-Social-Media-App-with-Drizzle/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PratikKrGhosh/Dummy-Social-Media-App-with-Drizzle.git"
+  },
+  "license": "MIT",
+  "author": "Pratik Kumar Ghosh",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./server/server.js",
+    "db:gen": "drizzle-kit generate",
+    "db:mig": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio"
+  },
+  "dependencies": {
+    "argon2": "^0.43.1",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.2.0",
+    "drizzle-orm": "^0.44.3",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "jsonwebtoken": "^9.0.2",
+    "mjml": "^1.3.4",
+    "mysql2": "^3.14.2",
+    "request-ip": "^3.3.0",
+    "resend": "^4.6.0",
+    "zod": "^4.0.5"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.4"
+  }
+}
