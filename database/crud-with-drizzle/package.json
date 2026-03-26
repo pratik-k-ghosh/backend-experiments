@@ -1,0 +1,32 @@
+{
+  "name": "crud-with-drizzle",
+  "version": "1.0.0",
+  "description": "This is a simple CRUD application using Drizzle ORM and Mysql",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db:gen": "drizzle-kit generate",
+    "db:mig": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio"
+  },
+  "keywords": [
+    "drizzle",
+    "mysql",
+    "orm",
+    "crud",
+    "sql"
+  ],
+  "author": "Pratik Kumar Ghosh",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "drizzle-orm": "^0.44.2",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.1"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.1"
+  }
+}
