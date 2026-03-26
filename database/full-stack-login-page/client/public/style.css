@@ -1,0 +1,61 @@
+/* root variables */
+:root {
+  --padding: 8px;
+  --gap: 8px;
+  --border-radius: 5px;
+  --font-size: 1rem;
+  --primary-color: blueviolet;
+  --secondary-color: rgb(2, 226, 2);
+  --tertiary-color: yellow;
+}
+
+/* reset css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: var(--font-size);
+}
+
+/* body css */
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color);
+}
+
+/* form css */
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: var(--gap);
+}
+
+form > input {
+  padding: var(--padding);
+  outline: none;
+  border: 2px solid black;
+  border-radius: var(--border-radius);
+}
+
+form > button {
+  padding: var(--padding);
+  cursor: pointer;
+  background: var(--secondary-color);
+  outline: none;
+  border: 2px solid black;
+  border-radius: var(--border-radius);
+}
+
+form > button:hover {
+  background: var(--tertiary-color);
+}
+
+form a {
+  color: var(--tertiary-color);
+}

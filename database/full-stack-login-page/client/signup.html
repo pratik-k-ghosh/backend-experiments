@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style" />
+    <title>Create account</title>
+  </head>
+  <body>
+    <form action="/api/user" method="post">
+      <label for="userid">User Id</label>
+      <input
+        type="text"
+        placeholder="Enter User Id"
+        name="userid"
+        id="userid"
+      />
+      <label for="password">Password</label>
+      <input
+        type="password"
+        placeholder="Enter Password"
+        name="password"
+        id="password"
+      />
+      <button type="submit">Create Account</button>
+      <p><a href="/">already have an account?</a></p>
+    </form>
+  </body>
+</html>

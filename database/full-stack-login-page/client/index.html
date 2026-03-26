@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style" />
+    <title>Log-in Page</title>
+  </head>
+  <body>
+    <form action="/api/user/">
+      <label for="userid">User Id</label>
+      <input
+        type="text"
+        placeholder="Enter User Id"
+        name="userid"
+        id="userid"
+      />
+      <label for="password">Password</label>
+      <input
+        type="password"
+        placeholder="Enter Password"
+        name="password"
+        id="password"
+      />
+      <button type="submit">Log in</button>
+      <p><a href="/signup">create account</a></p>
+    </form>
+  </body>
+</html>

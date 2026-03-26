@@ -1,0 +1,26 @@
+{
+  "name": "fullstackloginpage",
+  "version": "1.0.0",
+  "description": "Basic Log in and Registration form without any authentication",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PratikKrGhosh/FullStackLoginPage.git"
+  },
+  "author": "Pratik Kumar Ghosh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PratikKrGhosh/FullStackLoginPage/issues"
+  },
+  "homepage": "https://github.com/PratikKrGhosh/FullStackLoginPage#readme",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.15.1"
+  }
+}
