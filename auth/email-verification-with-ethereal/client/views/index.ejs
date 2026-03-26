@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/index.css" />
+    <title>Home Page</title>
+  </head>
+  <body>
+    <% if (!user){ %>
+    <h1>You are not Logged in</h1>
+    <a href="/login"><button>Log in</button></a>
+    <% }else{ %>
+    <h1><%= user.userName %></h1>
+    <h2><%= user.name %></h2>
+    <p><%= user.email %></p>
+    <% if (user.isVerified){ %>
+    <p>Verified</p>
+    <% }else{ %>
+    <p>Not Verified</p>
+    <a href="/verify/email"><button>Verify Email</button></a>
+    <% } %>
+    <a href="/logout"><button>Log out</button></a>
+    <% } %>
+  </body>
+</html>

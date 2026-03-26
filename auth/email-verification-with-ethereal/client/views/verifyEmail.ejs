@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/form.css" />
+    <title>Verify Your Email</title>
+  </head>
+  <body>
+    <h1>Let's Verify Your Email</h1>
+    <h4><%= user.email %></h4>
+    <form action="/verify/email" method="post">
+      <button type="submit">Resend Verification Code</button>
+    </form>
+    <form action="/verify/email-token" method="get">
+      <input
+        type="text"
+        name="token"
+        maxlength="8"
+        id="token"
+        placeholder="8 Digit Token"
+      />
+      <input type="hidden" name="email" value="<%= user.email %>" id="email" />
+      <% if (errors){ errors.forEach(error => { %>
+      <p><%= error %></p>
+      <% });} %>
+      <button type="submit">Verify</button>
+    </form>
+  </body>
+</html>
