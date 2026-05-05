@@ -30,14 +30,6 @@ const userSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
-userSchema.methods.verifyPassword = async function (password) {
-  try {
-    return await argon2.verify(this.password, password);
-  } catch (error) {
-    return false;
-  }
-};
-
 const User = new mongoose.model("User", userSchema);
 
 export default User;

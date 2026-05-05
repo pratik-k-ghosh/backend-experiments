@@ -1,6 +1,10 @@
 import TryCatch from "../middlewares/tryCatch.js";
 import sanitize from "mongo-sanitize";
-import { userSechema, verifyUserSechema } from "../validator/zod.validator.js";
+import {
+  loginSchema,
+  userSchema,
+  verifyuserSchema,
+} from "../validator/zod.validator.js";
 import User from "../models/user.model.js";
 import { sendEmail } from "../services/email.service.js";
 import { Redis } from "../config/redis.js";
@@ -12,7 +16,7 @@ export const getUser = TryCatch(async (req, res) => {
 
 export const registerUser = TryCatch(async (req, res) => {
   const reqData = sanitize(req.body);
-  const { data, error } = userSechema.safeParse(reqData);
+  const { data, error } = userSchema.safeParse(reqData);
 
   if (error) {
     res.status(400).send(error.issues[0].message);
@@ -63,7 +67,7 @@ export const registerUser = TryCatch(async (req, res) => {
 
 export const verifyUser = TryCatch(async (req, res) => {
   const reqData = sanitize(req.body);
-  const { data, error } = verifyUserSechema.safeParse(reqData);
+  const { data, error } = verifyuserSchema.safeParse(reqData);
 
   if (error) {
     return res.status(400).send(error.issues[0].message);
@@ -110,4 +114,29 @@ export const verifyUser = TryCatch(async (req, res) => {
   res.clearCookie("user_email");
 
   res.status(201).send("User registered successfully");
+});
+
+export const loginUser = TryCatch(async (req, res) => {
+  const reqData = sanitize(req.body);
+  const { data, error } = loginSchema.safeParse(reqData);
+
+  if (error) {
+    return res.status(400).send(error.issues[0].message);
+  }
+
+  const { email, password } = data;
+
+  const user = await User.findOne({ email });
+
+  if (!user) {
+    return res.status(400).send("Invalid email or password");
+  }
+
+  const isPasswordValid = await argon2.verify(user.password, password);
+
+  if (!isPasswordValid) {
+    return res.status(400).send("Invalid email or password");
+  }
+
+  res.status(200).send("Login successful");
 });
