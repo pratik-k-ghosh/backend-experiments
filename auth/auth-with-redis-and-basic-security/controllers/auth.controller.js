@@ -1,6 +1,6 @@
 import TryCatch from "../middlewares/tryCatch.js";
 import sanitize from "mongo-sanitize";
-import { userSechema } from "../validation/zod.js";
+import { userSechema } from "../validator/zod.validator.js";
 
 export const getUser = TryCatch(async (req, res) => {
   res.send("success");
