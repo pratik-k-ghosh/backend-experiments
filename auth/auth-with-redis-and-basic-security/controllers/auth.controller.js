@@ -9,10 +9,14 @@ import User from "../models/user.model.js";
 import { sendEmail } from "../services/email.service.js";
 import { Redis } from "../config/redis.js";
 import * as argon2 from "argon2";
-import { authCookieSetup } from "../services/authCookieSetup.js";
+import { authCookieSetup } from "../utils/authCookieSetup.js";
 
 export const getUser = TryCatch(async (req, res) => {
-  res.send("success");
+  if (!req.user) {
+    return res.status(401).send("Unauthorized");
+  }
+
+  res.status(200).json({ user: req.user });
 });
 
 export const registerUser = TryCatch(async (req, res) => {
@@ -139,11 +143,18 @@ export const loginUser = TryCatch(async (req, res) => {
     return res.status(400).send("Invalid email or password");
   }
 
-  await authCookieSetup(res, {
-    email: user.email,
-    name: user.name,
-    userName: user.userName,
-  });
+  await authCookieSetup(
+    res,
+    {
+      email: user.email,
+      name: user.name,
+      userName: user.userName,
+    },
+    {
+      clientIp: req.ip,
+      userAgent: req.get("User-Agent"),
+    },
+  );
 
   res.status(200).send("Login successful");
 });

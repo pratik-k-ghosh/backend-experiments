@@ -1,4 +1,5 @@
 import express from "express";
+import { authMiddleware } from "../middlewares/auth.middleware.js";
 import {
   getUser,
   loginUser,
@@ -8,7 +9,7 @@ import {
 
 const authRouter = express.Router();
 
-authRouter.get("/", getUser);
+authRouter.get("/", authMiddleware, getUser);
 authRouter.post("/register", registerUser);
 authRouter.post("/verify", verifyUser);
 authRouter.post("/login", loginUser);

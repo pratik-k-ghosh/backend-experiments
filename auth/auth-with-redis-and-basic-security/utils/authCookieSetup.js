@@ -1,20 +1,25 @@
 import jwt from "jsonwebtoken";
 import { Redis } from "../config/redis.js";
 
-export const authCookieSetup = async (res, data) => {
+export const authCookieSetup = async (res, data, client) => {
   const accessToken = jwt.sign(data, process.env.JWT_SECRET_KEY, {
     expiresIn: "30m",
   });
 
-  const refreshToken = jwt.sign(
-    { email: data.email },
-    process.env.JWT_SECRET_KEY,
-    {
-      expiresIn: "15d",
-    },
-  );
+  const sessionId = crypto.randomUUID(); // Using refresh token as session ID
 
-  await Redis.set(`refresh_token:${data.email}`, refreshToken, {
+  const refreshToken = jwt.sign({ sessionId }, process.env.JWT_SECRET_KEY, {
+    expiresIn: "15d",
+  });
+
+  const payload = {
+    email: data.email,
+    refreshToken,
+    ...client,
+    createdAt: new Date(),
+  };
+
+  await Redis.set(`session:${sessionId}`, JSON.stringify(payload), {
     EX: 15 * 24 * 60 * 60,
   }); // Store refresh token in Redis with a TTL of 15 days
 
