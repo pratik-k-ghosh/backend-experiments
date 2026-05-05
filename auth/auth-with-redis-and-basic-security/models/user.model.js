@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 import * as argon2 from "argon2";
-import { boolean } from "zod";
 
 const userSchema = new mongoose.Schema(
   {

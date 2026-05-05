@@ -11,8 +11,10 @@ export const registerUser = TryCatch(async (req, res) => {
   const { data, error } = userSechema.safeParse(reqData);
 
   if (error) {
-    res.status(400).send(error.message);
+    res.status(400).send(error.issues[0].message);
   }
+
+  const { name, userName, email, password } = data;
 
   res.send(data);
 });
