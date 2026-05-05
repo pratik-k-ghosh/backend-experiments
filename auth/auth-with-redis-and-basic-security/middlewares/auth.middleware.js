@@ -9,7 +9,8 @@ export const authMiddleware = TryCatch(async (req, res, next) => {
     const refreshToken = req.cookies.refresh_token;
 
     if (!refreshToken) {
-      return res.status(401).send("Refresh token missing");
+      req.user = null;
+      return next();
     }
 
     const payload = await refresh(req, res);

@@ -10,6 +10,7 @@ import { sendEmail } from "../services/email.service.js";
 import { Redis } from "../config/redis.js";
 import * as argon2 from "argon2";
 import { authCookieSetup } from "../utils/authCookieSetup.js";
+import jwt from "jsonwebtoken";
 
 export const getUser = TryCatch(async (req, res) => {
   if (!req.user) {
@@ -20,6 +21,12 @@ export const getUser = TryCatch(async (req, res) => {
 });
 
 export const registerUser = TryCatch(async (req, res) => {
+  if (req.user) {
+    return res
+      .status(400)
+      .send("You are already logged in, logout to register a new account");
+  }
+
   const reqData = sanitize(req.body);
   const { data, error } = userSchema.safeParse(reqData);
 
@@ -71,6 +78,12 @@ export const registerUser = TryCatch(async (req, res) => {
 });
 
 export const verifyUser = TryCatch(async (req, res) => {
+  if (req.user) {
+    return res
+      .status(400)
+      .send("You are already logged in, logout to verify a new account");
+  }
+
   const reqData = sanitize(req.body);
   const { data, error } = verifyuserSchema.safeParse(reqData);
 
@@ -122,6 +135,12 @@ export const verifyUser = TryCatch(async (req, res) => {
 });
 
 export const loginUser = TryCatch(async (req, res) => {
+  if (req.user) {
+    return res
+      .status(400)
+      .send("You are already logged in, logout to login to another account");
+  }
+
   const reqData = sanitize(req.body);
   const { data, error } = loginSchema.safeParse(reqData);
 
@@ -157,4 +176,24 @@ export const loginUser = TryCatch(async (req, res) => {
   );
 
   res.status(200).send("Login successful");
+});
+
+export const logoutUser = TryCatch(async (req, res) => {
+  if (!req.user) {
+    return res.status(401).send("You are not logged in");
+  }
+
+  const token = req.cookies.refresh_token;
+  const decoadedToken = jwt.decode(token, process.env.JWT_SECRET_KEY);
+
+  // Invalidate the refresh token
+  await Redis.del(`session:${decoadedToken.sessionId}`);
+
+  // Clear the access token cookie
+  res.clearCookie("access_token");
+
+  // Clear the refresh token cookie
+  res.clearCookie("refresh_token");
+
+  res.status(200).send("Logout successful");
 });
