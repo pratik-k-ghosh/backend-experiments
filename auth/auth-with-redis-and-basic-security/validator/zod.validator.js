@@ -12,3 +12,10 @@ export const userSechema = new z.object({
     .min(8, { message: "Password must be atleast 8 characters long" })
     .max(15, { message: "Password can be up to 15 characters long" }),
 });
+
+export const verifyUserSechema = new z.object({
+  otp: z
+    .string()
+    .trim()
+    .length(6, { message: "OTP must be 6 characters long" }),
+});

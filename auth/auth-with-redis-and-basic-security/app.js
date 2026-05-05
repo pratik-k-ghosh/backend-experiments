@@ -1,6 +1,7 @@
 // import all libraries
 import express from "express";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
 
 dotenv.config(); // Config ENV File
 
@@ -17,6 +18,7 @@ const app = express(); // Create app instance
 // app middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser("SecretKey"));
 
 // all routes
 app.use("/api/auth", authRouter);

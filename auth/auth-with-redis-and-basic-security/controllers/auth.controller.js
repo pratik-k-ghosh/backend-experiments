@@ -1,6 +1,6 @@
 import TryCatch from "../middlewares/tryCatch.js";
 import sanitize from "mongo-sanitize";
-import { userSechema } from "../validator/zod.validator.js";
+import { userSechema, verifyUserSechema } from "../validator/zod.validator.js";
 import User from "../models/user.model.js";
 import { sendEmail } from "../services/email.service.js";
 import { Redis } from "../config/redis.js";
@@ -54,8 +54,60 @@ export const registerUser = TryCatch(async (req, res) => {
   });
 
   Redis.set(registerRateLimitString, "1", { EX: 60 }); // Set rate limit for registration attempts (1 minute)
+  res.cookie("user_email", email, { maxAge: 5 * 60 * 1000, httpOnly: true }); // store email in cookie for 5 minutes
 
   res
     .status(200)
     .send("OTP sent Successfully, Verify within 5 minutes or register again");
+});
+
+export const verifyUser = TryCatch(async (req, res) => {
+  const reqData = sanitize(req.body);
+  const { data, error } = verifyUserSechema.safeParse(reqData);
+
+  if (error) {
+    return res.status(400).send(error.issues[0].message);
+  }
+
+  const { otp } = data;
+  const user_email = req.cookies.user_email;
+
+  const storedHashedOtp = await Redis.get(`otp:register:${user_email}`);
+
+  if (!storedHashedOtp) {
+    return res
+      .status(400)
+      .send("OTP expired or invalid, please register again");
+  }
+
+  const isOtpValid = await argon2.verify(storedHashedOtp, otp);
+
+  if (!isOtpValid) {
+    return res.status(400).send("Invalid OTP, please try again");
+  }
+
+  const userData = await Redis.get(`data:register:${user_email}`);
+
+  if (!userData) {
+    return res
+      .status(400)
+      .send("Registration data expired or invalid, please register again");
+  }
+
+  const { userName, name, email, password } = JSON.parse(userData);
+
+  const newUser = new User({
+    userName,
+    name,
+    email,
+    password,
+  });
+
+  await newUser.save();
+
+  await Redis.del(`otp:register:${user_email}`);
+  await Redis.del(`data:register:${user_email}`);
+  res.clearCookie("user_email");
+
+  res.status(201).send("User registered successfully");
 });
