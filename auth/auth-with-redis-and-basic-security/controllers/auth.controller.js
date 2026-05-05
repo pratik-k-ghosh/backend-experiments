@@ -9,6 +9,7 @@ import User from "../models/user.model.js";
 import { sendEmail } from "../services/email.service.js";
 import { Redis } from "../config/redis.js";
 import * as argon2 from "argon2";
+import { authCookieSetup } from "../services/authCookieSetup.js";
 
 export const getUser = TryCatch(async (req, res) => {
   res.send("success");
@@ -137,6 +138,12 @@ export const loginUser = TryCatch(async (req, res) => {
   if (!isPasswordValid) {
     return res.status(400).send("Invalid email or password");
   }
+
+  await authCookieSetup(res, {
+    email: user.email,
+    name: user.name,
+    userName: user.userName,
+  });
 
   res.status(200).send("Login successful");
 });
