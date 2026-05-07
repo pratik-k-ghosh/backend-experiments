@@ -31,7 +31,7 @@ export const registerUser = TryCatch(async (req, res) => {
   const { data, error } = userSchema.safeParse(reqData);
 
   if (error) {
-    res.status(400).send(error.issues[0].message);
+    return res.status(400).send(error.issues[0].message);
   }
 
   const { name, userName, email, password } = data;
@@ -55,8 +55,8 @@ export const registerUser = TryCatch(async (req, res) => {
   const otp = Math.floor(100000 + Math.random() * 900000).toString();
   const hashedOtp = await argon2.hash(otp);
 
-  Redis.set(`otp:register:${email}`, hashedOtp, { EX: 5 * 60 }); // Store OTP in Redis with a TTL of 5 minutes
-  Redis.set(
+  await Redis.set(`otp:register:${email}`, hashedOtp, { EX: 5 * 60 }); // Store OTP in Redis with a TTL of 5 minutes
+  await Redis.set(
     `data:register:${email}`,
     JSON.stringify({ userName, name, email, password: hashedPassword }),
     { EX: 5 * 60 },
@@ -69,7 +69,7 @@ export const registerUser = TryCatch(async (req, res) => {
     html: `<p>Your OTP for registration is: ${otp}</p>`,
   });
 
-  Redis.set(registerRateLimitString, "1", { EX: 60 }); // Set rate limit for registration attempts (1 minute)
+  await Redis.set(registerRateLimitString, "1", { EX: 60 }); // Set rate limit for registration attempts (1 minute)
   res.cookie("user_email", email, { maxAge: 5 * 60 * 1000, httpOnly: true }); // store email in cookie for 5 minutes
 
   res

@@ -15,19 +15,19 @@ export const refresh = TryCatch(async (req, res) => {
   );
 
   if (!storedSession) {
-    return res.status(401).send("Invalid or expired refresh token");
+    return { error: "Invalid or expired refresh token" };
   }
 
   const parsedSession = JSON.parse(storedSession);
 
   if (parsedSession.refreshToken !== refreshToken) {
-    return res.status(401).send("Invalid refresh token");
+    return { error: "Invalid refresh token" };
   }
 
   const user = await User.findOne({ email: parsedSession.email });
 
   if (!user) {
-    return res.status(401).send("User not found");
+    return { error: "User not found" };
   }
 
   const payload = {
