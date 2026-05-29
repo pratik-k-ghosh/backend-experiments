@@ -18,4 +18,8 @@ app.post("/user", (req, res) => {
   res.send("User Created");
 });
 
+app.use((error, req, res, next) => {
+  res.status(500).send("Something broke!");
+});
+
 export default app;

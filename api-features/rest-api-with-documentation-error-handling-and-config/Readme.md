@@ -1,3 +1,5 @@
+# API Documentation
+
 # Test User API
 
 This API handles creating new Users, fetching all user data at once or by User Id.
