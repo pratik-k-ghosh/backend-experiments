@@ -18,8 +18,4 @@ app.post("/user", (req, res) => {
   res.send("User Created");
 });
 
-app.get("/user", (req, res) => {
-  res.send("Missing User Id");
-});
-
 export default app;
